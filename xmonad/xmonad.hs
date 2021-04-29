@@ -78,11 +78,13 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     
     , ((modm, xK_a), namedScratchpadAction myScratchPads "telegram")
     , ((modm .|. shiftMask, xK_i), namedScratchpadAction myScratchPads "inbox")
+    , ((modm .|. shiftMask, xK_t), namedScratchpadAction myScratchPads "cqueue")
+    , ((modm .|. shiftMask, xK_p), namedScratchpadAction myScratchPads "cpermanent")
+    , ((modm .|. shiftMask, xK_f), namedScratchpadAction myScratchPads "cfleeting")
+    , ((modm .|. shiftMask, xK_l), namedScratchpadAction myScratchPads "cliterature")
+
     -- launch dmenu
     , ((modm,               xK_p     ), spawn "dmenu_run")
-
-    -- launch gmrun
-    , ((modm .|. shiftMask, xK_p     ), spawn "gmrun")
 
     -- close focused window
     , ((modm .|. shiftMask, xK_c     ), kill)
@@ -266,6 +268,10 @@ myScratchPads :: [NamedScratchpad]
 myScratchPads = [ NS "terminal" spawnTerm findTerm manageTerm
                 , NS "telegram" spawnTelegram findTelegram manageTelegram
                 , NS "inbox" spawnInbox findInbox manageInbox
+                , NS "cqueue" spawnCQUEUE findCQUEUE manageCQUEUE
+                , NS "cfleeting" spawnCFLEETING findCFLEETING manageCFLEETING
+                , NS "cpermanent" spawnCPERMANENT findCPERMANENT manageCPERMANENT
+                , NS "cliterature" spawnCLITERATURE findCLITERATURE manageCLITERATURE
                 ]
   where
     spawnTerm  = myTerminal ++ " -t scratchpad"
@@ -284,6 +290,25 @@ myScratchPads = [ NS "terminal" spawnTerm findTerm manageTerm
     spawnInbox = myTerminal ++ " -t inbox -e $HOME/software/jhon/snippets/inbox.sh"
     findInbox = title =? "inbox"
     manageInbox = customFloating $ W.RationalRect (1/3) (1/3) (1/2) (1/2)
+
+    spawnCQUEUE = myTerminal ++ " -t cqueue -e $HOME/second_brain/3_resources/snippets/czettel.sh task"
+    findCQUEUE = title =? "cqueue"
+    manageCQUEUE = customFloating $ W.RationalRect (1/3) (1/3) (1/2) (1/2)
+    
+    spawnCFLEETING = myTerminal ++ " -t cqueue -e $HOME/second_brain/3_resources/snippets/czettel.sh fleeting"
+    findCFLEETING = title =? "cfleeting"
+    manageCFLEETING = customFloating $ W.RationalRect (1/3) (1/3) (1/2) (1/2)
+
+    spawnCPERMANENT = myTerminal ++ " -t cqueue -e $HOME/second_brain/3_resources/snippets/czettel.sh permanent"
+    findCPERMANENT = title =? "cpermanent"
+    manageCPERMANENT = customFloating $ W.RationalRect (1/3) (1/3) (1/2) (1/2)
+
+    spawnCLITERATURE = myTerminal ++ " -t cqueue -e $HOME/second_brain/3_resources/snippets/czettel.sh literature"
+    findCLITERATURE = title =? "cliterature"
+    manageCLITERATURE = customFloating $ W.RationalRect (1/3) (1/3) (1/2) (1/2)
+
+
+
 
 ------------------------------------------------------------------------
 -- XMOBAR 
