@@ -58,10 +58,17 @@ nnoremap <leader>fs :FZF<cr>
 nnoremap <leader><leader> :update<cr>
 nnoremap <leader>d :call delete(expand('%'))
 "" FZF settings 
-command! -bang ProjectFiles call fzf#vim#files('$HOME/vim_notes/second_brain/1_okrs', <bang>0)
 
-map <F1> :Files<CR>
-map <F2> :ProjectFiles<CR>
+nnoremap <leader>fp :call fzf#run(fzf#vim#with_preview({'options': '--reverse --prompt "Select file from my PERSONAL notes directory: "', 'down': 20, 'dir': '/storage/docs/notes/personal', 'sink': 'e' }))<CR>| " open file from my PERSONAL notes directory
+nnoremap <leader>fw :call fzf#run(fzf#vim#with_preview({'options': '--reverse --prompt "Select file from my WORK notes directory: "', 'down': 20, 'dir': '/storage/docs/notes/work', 'sink': 'e' }))<CR>| " open file from my WORK notes directory
+
+command! -bang -nargs=* Zettel call fzf#vim#grep( 'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1, fzf#vim#with_preview({'dir': '$HOME/second_brain/zettels'}), <bang>0)
+nnoremap <F2> :Zettel()<CR>| " function key: open zettelkasten notes searching by word
+
+command! -bang ProjectFiles call fzf#vim#files('$HOME/second_brain', <bang>0)
+nnoremap <F1> :ProjectFiles<CR>| " function key: open second brain folder to search for files
+
+
 "-------------------------------------------
 "" Coc settings 
 " Set internal encoding of vim, not needed on neovim, since coc.nvim using some
