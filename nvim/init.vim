@@ -11,6 +11,7 @@ Plug 'rakr/vim-one'
 Plug 'Omnisharp/omnisharp-vim' " C# dev
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'pangloss/vim-javascript'
 Plug 'peitalin/vim-jsx-typescript'
@@ -55,8 +56,13 @@ let mapleader="\<space>"
 nnoremap <leader>fs :FZF<cr>
 " Remap save vim to space space
 nnoremap <leader><leader> :update<cr>
+nnoremap <leader>d :call delete(expand('%'))
+"" FZF settings 
+command! -bang ProjectFiles call fzf#vim#files('$HOME/vim_notes/second_brain/1_okrs', <bang>0)
 
-
+map <F1> :Files<CR>
+map <F2> :ProjectFiles<CR>
+"-------------------------------------------
 "" Coc settings 
 " Set internal encoding of vim, not needed on neovim, since coc.nvim using some
 " unicode characters in the file autoload/float.vim
