@@ -65,9 +65,11 @@ nnoremap <leader>fw :call fzf#run(fzf#vim#with_preview({'options': '--reverse --
 command! -bang -nargs=* Zettel call fzf#vim#grep( 'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1, fzf#vim#with_preview({'dir': '$HOME/second_brain/zettels'}), <bang>0)
 nnoremap <F2> :Zettel()<CR>| " function key: open zettelkasten notes searching by word
 
+command! -bang -nargs=* ProjectFilesRG call fzf#vim#grep( 'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1, fzf#vim#with_preview({'dir': '$HOME/second_brain'}), <bang>0)
+nnoremap <F2> :ProjectFilesRG()<CR>| " function key: open second brain folder to search inside files
+
 command! -bang ProjectFiles call fzf#vim#files('$HOME/second_brain', <bang>0)
 nnoremap <F1> :ProjectFiles<CR>| " function key: open second brain folder to search for files
-
 
 "-------------------------------------------
 "" Coc settings 
