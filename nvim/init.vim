@@ -16,6 +16,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'pangloss/vim-javascript'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'mxw/vim-jsx'
+Plug 'dart-lang/dart-vim-plugin'
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
   \ 'branch': 'release/0.x'
