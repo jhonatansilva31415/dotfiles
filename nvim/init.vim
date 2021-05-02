@@ -57,11 +57,13 @@ set shiftwidth=2
 set expandtab
 
 let mapleader="\<space>"
+" Vimspector
+nnoremap <leader>dd :call vimspector#Launch()
 " Fuzy search
 nnoremap <leader>fs :FZF<cr>
 " Remap save vim to space space
 nnoremap <leader><leader> :update<cr>
-nnoremap <leader>d :call delete(expand('%'))
+nnoremap <leader>x :call delete(expand('%'))
 "" FZF settings 
 
 nnoremap <leader>fp :call fzf#run(fzf#vim#with_preview({'options': '--reverse --prompt "Select file from my PERSONAL notes directory: "', 'down': 20, 'dir': '/storage/docs/notes/personal', 'sink': 'e' }))<CR>| " open file from my PERSONAL notes directory
