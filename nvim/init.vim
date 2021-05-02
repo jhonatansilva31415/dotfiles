@@ -15,6 +15,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'pangloss/vim-javascript'
 Plug 'peitalin/vim-jsx-typescript'
+Plug 'puremourning/vimspector' " debug in neovim
 Plug 'mxw/vim-jsx'
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'prettier/vim-prettier', {
@@ -22,6 +23,9 @@ Plug 'prettier/vim-prettier', {
   \ 'branch': 'release/0.x'
     \ }
 call plug#end()
+
+" Vim inspector 
+let g:vimspector_enable_mappings='HUMAN'
 
 syntax on
 let g:airline_theme='one'
