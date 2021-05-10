@@ -24,6 +24,13 @@ Plug 'prettier/vim-prettier', {
     \ }
 call plug#end()
 
+nnoremap <Up> <Nop>
+nnoremap <Down> <Nop>
+nnoremap <Left> <Nop>
+nnoremap <Right> <Nop>
+
+set clipboard+=unnamedplus
+
 " Vim inspector 
 let g:vimspector_enable_mappings='HUMAN'
 
